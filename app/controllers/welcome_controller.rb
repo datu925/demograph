@@ -12,6 +12,9 @@ class WelcomeController < ApplicationController
     @names = rsvps.map do |rsvp|
       [rsvp["member"]["name"], GenderDetector.detect_name(rsvp["member"]["name"])]
     end
+    # name_list = Gendered::NameList.new(@names)
+    # binding.pry
+    # name_list.guess!
     male = @names.select { |name| name[1] == "male" }.length
     female = @names.select { |name| name[1] == "female" }.length
     neutral = @names.select { |name| name[1] == "neutral" }.length
