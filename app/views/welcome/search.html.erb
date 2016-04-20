@@ -1,0 +1,18 @@
+<h1>Results</h1>
+
+<ul>
+  <li>Total attendees: <%= @names.length %></li>
+  <li>Male attendees (est): <%= @stats[:male_percentage] %></li>
+  <li>Female attendees (est): <%= @stats[:female_percentage] %></li>
+  <li>Uncategorized attendees (est): <%= @stats[:uncategorized_percentage] %></li>
+</ul>
+
+<ul>
+  <% @names.each do |name| %>
+
+    <li><%= name %></li>
+
+  <% end %>
+</ul>
+
+<%= link_to "Try another", root_path %>
