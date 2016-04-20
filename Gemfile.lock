@@ -58,6 +58,7 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    guess (0.1.0)
     hirb (0.7.3)
     httparty (0.13.7)
       json (~> 1.8)
@@ -181,6 +182,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  guess
   httparty
   jazz_fingers
   jbuilder (~> 2.0)
