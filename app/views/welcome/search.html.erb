@@ -1,0 +1,11 @@
+<h1>Results</h1>
+
+<ul>
+  <% @names.each do |name| %>
+
+    <li><%= name %></li>
+
+  <% end %>
+</ul>
+
+<%= link_to "Try another", root_path %>
