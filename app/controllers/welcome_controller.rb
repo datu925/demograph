@@ -9,16 +9,25 @@ class WelcomeController < ApplicationController
     event_id = re.match(full_url)[2]
 
     rsvps = HTTParty.get("https://api.meetup.com/#{org}/events/#{event_id}/rsvps")
-    @names = rsvps.map do |rsvp|
-      [rsvp["member"]["name"], GenderDetector.detect_name(rsvp["member"]["name"])]
+    # @names = rsvps.map do |rsvp|
+    #   [rsvp["member"]["name"], GenderDetector.detect_beta(rsvp["member"]["name"])]
+    # end
+
+    @rsvps = rsvps.map do |rsvp|
+      RSVP.new({
+                full_name: rsvp["member"]["name"],
+                first_name: rsvp["member"]["name"].split(" ").first,
+                is_attending: "null",
+                gender: "null"
+              })
     end
-    # name_list = Gendered::NameList.new(@names)
-    # binding.pry
-    # name_list.guess!
-    male = @names.select { |name| name[1] == "male" }.length
-    female = @names.select { |name| name[1] == "female" }.length
-    neutral = @names.select { |name| name[1] == "neutral" }.length
-    total = @names.length
+
+    GenderDetector.detect_mass(@rsvps)
+
+    male = @rsvps.select { |rsvp| rsvp.gender == "male" }.length
+    female = @rsvps.select { |rsvp| rsvp.gender == "female" }.length
+    neutral = @rsvps.select { |rsvp| rsvp.gender == "not_guessed" }.length
+    total = @rsvps.length
     @stats = { male_percentage: male / total.to_f,
                female_percentage: female / total.to_f,
                uncategorized_percentage: neutral / total.to_f }
