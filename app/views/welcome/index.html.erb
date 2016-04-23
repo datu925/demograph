@@ -1,6 +1,6 @@
-<h1>Landing page</h1>
+<p id='summary'>Demograph will estimate the gender attendance of a Meetup.com event, when you feed it a URL.</p>
 
 <%= form_for :event, url: search_path do |f| %>
-  Event URL: <%= f.text_field :url %><br />
+<%= f.text_field :url, placeholder: "Enter Meetup.com URL. e.g. www.meetup.com/ChicagoRuby/events/229245222/" %><br />
   <%= f.submit "Check gender demographics" %>
 <% end %>

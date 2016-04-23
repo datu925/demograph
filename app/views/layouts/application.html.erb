@@ -8,7 +8,22 @@
 </head>
 <body>
 
-<%= yield %>
+<header>
+  <div>
+    <h1 id="title"><%= link_to "Demograph", root_path %></h1>
+  </div>
+  <nav>
+    <ul>
+      <li><%= link_to "Why?", why_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Feedback", feedback_path %></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <%= yield %>
+</main>
 
 </body>
 </html>

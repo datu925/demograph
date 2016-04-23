@@ -2,7 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#summary {
+  text-align: center;
+}
+
+form input {
+  display: block;
+  margin: auto;
+}
 
 form input[type='text'] {
-  width: 800px;
+  width: 60%;
+}
+
+form input[type='submit'] {
+  display: block;
+  margin: 0 auto;
+  background-color: #E86575; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.use-case {
+  font-weight: bold;
 }
