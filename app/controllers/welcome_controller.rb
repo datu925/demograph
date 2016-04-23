@@ -2,6 +2,15 @@ class WelcomeController < ApplicationController
   def index
   end
 
+  def why
+  end
+
+  def about
+  end
+
+  def feedback
+  end
+
   def search
     full_url = params[:event][:url]
     re = /meetup.com\/(.*?)\/events\/(.*?)\//i
