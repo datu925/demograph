@@ -1,16 +1,16 @@
 <h1>Results</h1>
 
 <ul>
-  <li>Total attendees: <%= @names.length %></li>
-  <li>Male attendees (est): <%= @stats[:male_percentage] %></li>
-  <li>Female attendees (est): <%= @stats[:female_percentage] %></li>
-  <li>Uncategorized attendees (est): <%= @stats[:uncategorized_percentage] %></li>
+  <li>Total attendees: <%= @rsvps.length %></li>
+  <li>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
+  <li>Female attendees (est): <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %></li>
+  <li>Uncategorized attendees (est): <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
 </ul>
 
 <ul>
-  <% @names.each do |name| %>
+  <% @rsvps.each do |rsvp| %>
 
-    <li><%= name %></li>
+    <li><%= "#{rsvp.full_name}, #{rsvp.gender}" %></li>
 
   <% end %>
 </ul>
