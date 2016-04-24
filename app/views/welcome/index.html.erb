@@ -1,6 +1,6 @@
-<p id='summary'>Demograph will estimate the gender attendance of a Meetup.com event, when you feed it a URL.</p>
+<p id='summary'>Demograph will estimate the gender demographics (e.g. male-female ratio) of a Meetup.com event when you feed it a URL.</p>
 
 <%= form_for :event, url: search_path do |f| %>
-<%= f.text_field :url, placeholder: "Enter Meetup.com URL. e.g. www.meetup.com/ChicagoRuby/events/229245222/" %><br />
+<%= f.text_field :url, placeholder: "Enter Meetup.com URL. e.g. www.meetup.com/ChicagoRuby/events/229245222/", autocomplete:"off" %><br />
   <%= f.submit "Check gender demographics" %>
 <% end %>
