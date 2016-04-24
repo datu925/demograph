@@ -1,7 +1,7 @@
 <h1>Results</h1>
 
 <ul>
-  <li>Total attendees: <%= @rsvps.length %></li>
+  <li>Total attendees: <%= @attendees.length %></li>
   <li>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
   <li>Female attendees (est): <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %></li>
   <li>Uncategorized attendees (est): <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
@@ -9,9 +9,9 @@
 </ul>
 
 <ul>
-  <% @rsvps.each do |rsvp| %>
+  <% @attendees.each do |attendee| %>
 
-    <li><%= "#{rsvp.full_name}, #{rsvp.gender}" %></li>
+    <li><%= "#{attendee.full_name}, #{attendee.gender}" %></li>
 
   <% end %>
 </ul>
