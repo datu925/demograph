@@ -5,6 +5,7 @@
   <li>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
   <li>Female attendees (est): <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %></li>
   <li>Uncategorized attendees (est): <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
+  <li>Male-female ratio (est): <%= @stats[:ratio] %></li>
 </ul>
 
 <ul>

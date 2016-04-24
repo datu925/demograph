@@ -18,9 +18,6 @@ class WelcomeController < ApplicationController
     event_id = re.match(full_url)[2]
 
     rsvps = HTTParty.get("https://api.meetup.com/#{org}/events/#{event_id}/rsvps")
-    # @names = rsvps.map do |rsvp|
-    #   [rsvp["member"]["name"], GenderDetector.detect_beta(rsvp["member"]["name"])]
-    # end
 
     @rsvps = rsvps.map do |rsvp|
       RSVP.new({
@@ -37,8 +34,10 @@ class WelcomeController < ApplicationController
     female = @rsvps.select { |rsvp| rsvp.gender == "female" }.length
     neutral = @rsvps.select { |rsvp| rsvp.gender == "not_guessed" }.length
     total = @rsvps.length
+    ratio = female != 0 ? male / female.to_f : "Undefined (no female attendance"
     @stats = { male_percentage: male / total.to_f,
                female_percentage: female / total.to_f,
-               uncategorized_percentage: neutral / total.to_f }
+               uncategorized_percentage: neutral / total.to_f,
+               ratio: ratio }
   end
 end
