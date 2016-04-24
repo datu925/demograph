@@ -18,7 +18,7 @@ form input[type='text'] {
 form input[type='submit'] {
   display: block;
   margin: 0 auto;
-  background-color: #E86575; /* Green */
+  background-color: #E86575;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -29,4 +29,8 @@ form input[type='submit'] {
 
 .use-case {
   font-weight: bold;
+}
+
+#attendees {
+  display: none;
 }

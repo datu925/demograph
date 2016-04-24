@@ -1,5 +1,8 @@
 <h1>Results</h1>
 
+<p>Event Name: <%= @event_name %></p>
+<p>Original link: <%= @full_url %></p>
+
 <ul>
   <li>Total attendees: <%= @attendees.length %></li>
   <li>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
@@ -8,7 +11,11 @@
   <li>Male-female ratio (est): <%= @stats[:ratio] %></li>
 </ul>
 
-<ul>
+<p><%= link_to "Try another", root_path %></p>
+
+<p><a href="#" id="toggle-attendees">Show/hide attendees</a></p>
+
+<ul id="attendees">
   <% @attendees.each do |attendee| %>
 
     <li><%= "#{attendee.full_name}, #{attendee.gender}" %></li>
@@ -16,4 +23,3 @@
   <% end %>
 </ul>
 
-<%= link_to "Try another", root_path %>
