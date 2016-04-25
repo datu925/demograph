@@ -12,8 +12,10 @@ $(function() {
   var xAxis = d3.svg.axis()
                     .scale(linearScale);
 
+  var percMale = 100 * $("#percent-male").attr("data-percent");
+
   var circles = svgContainer.selectAll("circle")
-    .data([50])
+    .data([percMale])
     .enter()
     .append("circle")
     .attr("cx", function(d) { return linearScale(d) })
@@ -31,13 +33,13 @@ $(function() {
               .attr("x", 75 )
               .attr("y", 165 )
               .style("text-anchor", "middle")
-              .text("all men");
+              .text("all women");
 
   svgContainer.append("text")
               .attr("x", 425 )
               .attr("y", 165 )
               .style("text-anchor", "middle")
-              .text("all women");
+              .text("all men");
 
 
 })
