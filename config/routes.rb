@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   post '/search', to: 'welcome#search', as: "search"
 
+  resources :users, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create]
+  get '/logout', to: 'sessions#destroy', as: "logout"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
