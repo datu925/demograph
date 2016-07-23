@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   get '/about', to: 'welcome#about', as: "about"
   get '/why', to: 'welcome#why', as: "why"
   get '/feedback', to: 'welcome#feedback', as: "feedback"
+  get '/login', to: 'sessions#new', as: "login"
 
   post '/search', to: 'welcome#search', as: "search"
 
   resources :users, only: [:new, :create, :destroy]
   resources :sessions, only: [:new, :create]
+  resources :notifications, only: [:create, :index, :destroy]
   get '/logout', to: 'sessions#destroy', as: "logout"
 
   # Example of regular route:

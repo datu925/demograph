@@ -1,17 +1,26 @@
 <h1>Results</h1>
 
 <p>Event Name: <%= @event_name %></p>
-<p>Original link: <%= @full_url %></p>
+<p>Original link: <a href="<%= @full_url %>"><%= @full_url %></a></p>
 
 <ul>
   <li>Total attendees: <%= @attendees.length %></li>
   <li id="percent-male" data-percent=<%= @stats[:male_percentage] %>>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
   <li>Female attendees (est): <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %></li>
   <li>Uncategorized attendees (est): <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
-  <li>Male-female ratio (est): <%= @stats[:ratio] %></li>
+  <li>Male-female ratio (est): <%= number_with_precision(@stats[:ratio], precision: 2) %></li>
 </ul>
 
 <div id="percent-chart"></div>
+
+<p>Email me with updates before the event.</p>
+<p>Number of days prior to the event:</p>
+<%= form_for @notification do |f| %>
+  <%= f.select :days_before, [["2 weeks", 14], ["1 week", 7], ["3 days", 3], ["1 day", 1]] %>
+  <%= hidden_field_tag :event_url, @full_url %>
+  <%= hidden_field_tag :event_name, @event_name %>
+  <%= f.submit "Set notification" %>
+<% end %>
 
 <p><%= link_to "Try another", root_path %></p>
 

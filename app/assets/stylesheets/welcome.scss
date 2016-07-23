@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-form input {
+#main_search input {
   display: block;
   margin: auto;
 }
@@ -17,7 +17,6 @@ form input[type='text'] {
 
 form input[type='submit'] {
   display: block;
-  margin: 0 auto;
   background-color: #E86575;
   border: none;
   color: white;
