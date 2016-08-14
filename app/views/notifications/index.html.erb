@@ -1,0 +1,6 @@
+<ul>
+  <% @notifications.each do |notification| %>
+    <li><a href="<%= notification.event.url %>"><%= notification.event.name %></a>, <%= notification.days_before %> days before event</li>
+    <%= link_to "Delete", notification_path(notification), method: :delete %>
+  <% end %>
+</ul>

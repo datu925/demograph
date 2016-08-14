@@ -1,0 +1,13 @@
+<% unless flash.now[:error].nil? %>
+  <% flash.now[:error].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+<% end %>
+
+<%= form_for :session, url: sessions_path do |f| %>
+
+Email: <%= f.text_field :email %><br />
+Password: <%= f.password_field :password %><br />
+<%= f.submit "Log in" %>
+
+<% end %>
