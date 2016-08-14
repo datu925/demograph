@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.first_name %>,</h1>
+    <p>
+      You scheduled a notification for today for this event: <a href="<%= @event.url %>"><%= @event.name %></a>
+    </p>
+    <p>
+      That event is currently 50% male and 50% female.
+    </p>
+  </body>
+</html>
