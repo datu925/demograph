@@ -9,7 +9,7 @@
       You scheduled a notification for today for this event: <a href="<%= @event.url %>"><%= @event.name %></a>
     </p>
     <p>
-      That event currently has <%= @total %> attendees. <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %> of them are male, <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %> of them are female, and <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %> of them are uncategorized (gender could not be determined).
+      <%= render "percentages_summary.html.erb" %>
     </p>
   </body>
 </html>
