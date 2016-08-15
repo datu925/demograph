@@ -1,6 +1,8 @@
 Hi <%= @user.first_name %>,
 =====================
 
-You scheduled a notification for today for this event: <%= @event.name %> at <%= @event.url %>.
+You scheduled a notification for today for this event: <%= @event.name %>
+at
+<%= @event.url %>.
 
-That event is currently 50% male and 50% female.
+<%= render "percentages_summary.html.erb" %>

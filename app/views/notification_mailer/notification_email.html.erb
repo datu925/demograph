@@ -9,7 +9,7 @@
       You scheduled a notification for today for this event: <a href="<%= @event.url %>"><%= @event.name %></a>
     </p>
     <p>
-      That event is currently 50% male and 50% female.
+      <%= render "percentages_summary.html.erb" %>
     </p>
   </body>
 </html>
