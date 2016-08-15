@@ -23,7 +23,6 @@ class WelcomeController < ApplicationController
     # @full_url = "https://www.meetup.com/Chicago-Fun-Volunteers/events/232499571/"
     # @attendees = []
     # @stats = { male_percentage: 25, female_percentage: 75, uncategorized_percentage: 0, ratio: 0.33}
-    @notification = Notification.new
     rsvps = HTTParty.get("https://api.meetup.com/#{org}/events/#{event_id}/rsvps")
     @event_name = rsvps.first["event"]["name"]
 
@@ -48,6 +47,8 @@ class WelcomeController < ApplicationController
                female_percentage: female / total.to_f,
                uncategorized_percentage: neutral / total.to_f,
                ratio: ratio }
+
+    @notification = Notification.new
 
   end
 end
