@@ -10,6 +10,7 @@ class MeetupSearcher
   def get_rsvps
     rsvps = HTTParty.get("https://api.meetup.com/#{@org}/events/#{@event_id}/rsvps")
     @event_name = rsvps.first["event"]["name"]
+    @event_time = rsvps.first["event"]["time"]
 
     @rsvps = rsvps.map do |rsvp|
       RSVP.new({
@@ -35,6 +36,7 @@ class MeetupSearcher
     ratio = female != 0 ? male / female.to_f : "Undefined (no female attendance"
     @stats = { total: total,
                event_name: @event_name,
+               event_time: @event_time,
                male_percentage: male / total.to_f,
                female_percentage: female / total.to_f,
                uncategorized_percentage: neutral / total.to_f,
