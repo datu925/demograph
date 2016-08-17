@@ -7,12 +7,15 @@ class MeetupSearcher
     @event_id = re.match(@url)[2]
   end
 
-  def get_rsvps
-    rsvps = HTTParty.get("https://api.meetup.com/#{@org}/events/#{@event_id}/rsvps")
-    @event_name = rsvps.first["event"]["name"]
-    @event_time = rsvps.first["event"]["time"]
+  def call_meetup
+    HTTParty.get("https://api.meetup.com/#{@org}/events/#{@event_id}/rsvps")
+  end
 
-    @rsvps = rsvps.map do |rsvp|
+  def get_rsvps(resp)
+    @event_name = resp.first["event"]["name"]
+    @event_time = resp.first["event"]["time"]
+
+    @rsvps = resp.map do |rsvp|
       RSVP.new({
                 full_name: rsvp["member"]["name"],
                 first_name: rsvp["member"]["name"].split(" ").first,
@@ -44,7 +47,7 @@ class MeetupSearcher
   end
 
   def get_rsvps_and_analyze
-    get_rsvps
+    get_rsvps(call_meetup)
     detect_gender
     analyze_attendees
   end
