@@ -53,3 +53,9 @@ main {
   /*clear: both;*/
   margin: 50px 10%;
 }
+
+.url-error {
+  color: red;
+  margin: 0 auto;
+  text-align: center;
+}

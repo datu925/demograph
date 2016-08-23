@@ -2,9 +2,15 @@ class MeetupSearcher
   attr_reader :stats, :attendees
   def initialize(url)
     @url = url
+  end
+
+  def valid_url?
     re = /meetup.com\/(.*?)\/events\/(.*?)\//i
     @org = re.match(@url)[1]
     @event_id = re.match(@url)[2]
+    true
+  rescue
+    false
   end
 
   def call_meetup
@@ -12,16 +18,22 @@ class MeetupSearcher
   end
 
   def get_rsvps(resp)
-    @event_name = resp.first["event"]["name"]
-    @event_time = resp.first["event"]["time"]
 
-    @rsvps = resp.map do |rsvp|
-      RSVP.new({
-                full_name: rsvp["member"]["name"],
-                first_name: rsvp["member"]["name"].split(" ").first,
-                is_attending: rsvp["response"],
-                gender: "null"
-              })
+    begin
+      @event_name = resp.first["event"]["name"]
+      @event_time = resp.first["event"]["time"]
+    rescue TypeError
+      raise ArgumentError, "URL not found on meetup.com"
+    else
+
+      @rsvps = resp.map do |rsvp|
+        RSVP.new({
+                  full_name: rsvp["member"]["name"],
+                  first_name: rsvp["member"]["name"].split(" ").first,
+                  is_attending: rsvp["response"],
+                  gender: "null"
+                })
+      end
     end
   end
 
