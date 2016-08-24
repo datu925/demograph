@@ -1,35 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Demograph</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/be5c15bf13.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<header>
-  <div>
-    <h1 id="title"><%= link_to "Demograph", root_path %></h1>
-  </div>
-  <nav>
-    <ul>
+
+<nav class="navbar navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header"><%= link_to "Demograph", root_path, {class: "navbar-brand"} %></div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Why?", why_path %></li>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Feedback", feedback_path %></li>
       <% if logged_in? %>
-        <!-- <li><%= link_to "My Notifications", notifications_path %></li> -->
         <li><%= link_to "Logout", logout_path %></li>
       <% else %>
         <li><%= link_to "Login", new_session_path %></li>
         <li><%= link_to "Register", new_user_path %></li>
       <% end %>
     </ul>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <main>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </main>
 
 </body>

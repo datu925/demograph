@@ -1,34 +1,33 @@
+<div class="container-fluid text-center">
+
 <h1>Results</h1>
 
-<p>Event Name: <%= @event_name %></p>
-<p>Original link: <a href="<%= @full_url %>"><%= @full_url %></a></p>
+<p>Event Name: <a href="<%= @full_url %>"><%= @event_name %></a></p>
 
-<ul>
-  <li>Total attendees: <%= @attendees.length %></li>
-  <li id="percent-male" data-percent=<%= @stats[:male_percentage] %>>Male attendees (est): <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %></li>
-  <li>Female attendees (est): <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %></li>
-  <li>Uncategorized attendees (est): <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
-  <li>Male-female ratio (est): <%= number_with_precision(@stats[:ratio], precision: 2) %></li>
-</ul>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 text-center">
+      <div>
+        <i class="fa fa-female fa-3x" aria-hidden="true"></i>: <%= number_to_percentage(100 * @stats[:female_percentage], precision: 1) %>
+        <i class="fa fa-male fa-3x" aria-hidden="true"></i>: <%= number_to_percentage(100 * @stats[:male_percentage], precision: 1) %>
+      </div>
+      <ul class="list-unstyled">
+      <li>Uncategorized attendees: <%= number_to_percentage(100 * @stats[:uncategorized_percentage], precision: 1) %></li>
+      <li id="percent-male" data-percent=<%= @stats[:male_percentage] %>>Total attendees: <%= @attendees.length %></li>
+      <li>Male-female ratio: <%= number_with_precision(@stats[:ratio], precision: 2) %></li>
+      </ul>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
 
 <div id="percent-chart"></div>
 
-<!-- <br>
-<h3>Email me with updates before the event:</h3>
-<p>Number of days prior to the event:</p>
-<%= form_for @notification do |f| %>
-  <%= f.select :days_before, [["2 weeks", 14], ["1 week", 7], ["3 days", 3], ["1 day", 1]] %>
-  <%= hidden_field_tag :event_url, @full_url %>
-  <%= hidden_field_tag :event_name, @event_name %>
-  <%= hidden_field_tag :event_time, @event_time %>
-  <%= f.submit "Set notification" %>
-<% end %> -->
 
 <p><%= link_to "Search another Meetup", root_path %></p>
 
 <p><a href="#" id="toggle-attendees">Show/hide attendees</a></p>
 
-<ul id="attendees">
+<ul id="attendees" class="list-unstyled">
   <% @attendees.each do |attendee| %>
 
     <li><%= "#{attendee.full_name}, #{attendee.gender}" %></li>
@@ -36,3 +35,6 @@
   <% end %>
 </ul>
 
+
+
+</div>
