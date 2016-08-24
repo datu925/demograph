@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
       @attendees = searcher.attendees
       @stats = searcher.stats
 
-      @notification = Notification.new
+      # @notification = Notification.new
     else
       flash[:error] = "Invalid URL - follow the example format exactly."
       redirect_to root_url

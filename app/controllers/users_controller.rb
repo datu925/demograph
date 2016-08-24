@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      UserMailer.welcome_email(@user).deliver_now
+      # UserMailer.welcome_email(@user).deliver_now
       redirect_to '/welcome/index'
     else
       flash.now[:error] = @user.errors.full_messages

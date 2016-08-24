@@ -18,44 +18,35 @@ body {
   font-family: Verdana, Geneva, sans-serif;
 }
 
-header {
-  background-color: #E86575;
-  display: flex;
-  justify-content: space-between;
+
+
+.navbar-custom {
+    background-color: #E86575;
 }
 
-#title {
-  display: inline;
-  margin: 20px;
-  color: white;
-}
-
-nav ul {
-  list-style-type: none;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 20px;
-  color: white;
-}
-
-header a {
-  text-decoration: none;
-  color: white;
-}
-
-header a:hover {
-  text-decoration: underline;
-}
-
-main {
-  /*clear: both;*/
-  margin: 50px 10%;
+.navbar-custom * {
+    color: #fff;
 }
 
 .url-error {
   color: red;
   margin: 0 auto;
   text-align: center;
+}
+
+i.fa-male {
+  color: DeepSkyBlue;
+}
+
+i.fa-female {
+  color: Pink;
+}
+
+.axis text {
+  fill: gray;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
 }
