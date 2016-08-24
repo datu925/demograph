@@ -52,15 +52,17 @@ $(function() {
 
 
   svgContainer.append("text")
-              .attr("x", 75 )
-              .attr("y", 165 )
+              .attr("x", 55 )
+              .attr("y", 85 )
               .style("text-anchor", "middle")
+              .style("fill", "Pink")
               .text("all women");
 
   svgContainer.append("text")
-              .attr("x", 425 )
-              .attr("y", 165 )
+              .attr("x", 445 )
+              .attr("y", 85 )
               .style("text-anchor", "middle")
+              .style("fill", "DeepSkyBlue")
               .text("all men");
 
 
