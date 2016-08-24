@@ -13,16 +13,18 @@
 
 <div id="percent-chart"></div>
 
-<p>Email me with updates before the event.</p>
+<br>
+<h3>Email me with updates before the event:</h3>
 <p>Number of days prior to the event:</p>
 <%= form_for @notification do |f| %>
   <%= f.select :days_before, [["2 weeks", 14], ["1 week", 7], ["3 days", 3], ["1 day", 1]] %>
   <%= hidden_field_tag :event_url, @full_url %>
   <%= hidden_field_tag :event_name, @event_name %>
+  <%= hidden_field_tag :event_time, @event_time %>
   <%= f.submit "Set notification" %>
 <% end %>
 
-<p><%= link_to "Try another", root_path %></p>
+<p><%= link_to "Search another Meetup", root_path %></p>
 
 <p><a href="#" id="toggle-attendees">Show/hide attendees</a></p>
 
